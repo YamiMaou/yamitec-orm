@@ -1,0 +1,20 @@
+{
+    "name": "yamitec/orm",
+    "description": "ORM basica",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Maou Yami",
+            "email": "maou@yamitec.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "yamitec/dot-env": "dev-main"
+    },
+    "autoload": {
+        "psr-4":{
+            "YamiTec\\ORM\\":"src/"
+        }
+    }
+}

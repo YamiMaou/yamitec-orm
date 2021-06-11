@@ -1,0 +1,20 @@
+<?php
+$params    = array_slice($argv, 1);
+$cmd       = "{$params[0]} {$params[1]}";
+$migrationName = array_slice($argv, 3);
+$migrationName = str_replace(" ", "_", $migrationName);
+$pathname      = "migrations/".implode("_",$migrationName).".sql";
+if ($cmd == "make migration") {
+    //var_dump($pathname); die;
+  file_put_contents($pathname, "# Criado em ". date("Y-m-d"));
+  echo "Migration criada em: {$pathname}";
+}
+
+if ($params[0] == "migrate") {
+  $files = glob("migrations/*.sql", GLOB_BRACE);
+  foreach ($files as $file) {
+    $content = file_get_contents($file);
+    // executa o comando sql da migration
+    DB::execute($content);
+  }
+}
