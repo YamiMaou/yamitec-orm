@@ -2,8 +2,10 @@
 namespace YamiTec\ORM;
 
 use YamiTec\ORM\Extend\AdapterExtends;
+use YamiTec\ORM\Methods\Insert;
 use YamiTec\ORM\Methods\Schema;
 use YamiTec\ORM\Methods\Select;
+use YamiTec\ORM\Methods\Update;
 
 class YamiORM {
     protected $conn;
@@ -11,15 +13,18 @@ class YamiORM {
     public function __construct(AdapterExtends $adapter){
         $this->conn = (new $adapter)->connect();
     }
+    public function Query($query){
+        return $this->conn->query($query)->fetchAll();
+    }
     public function Select(){
         return new Select($this->conn);
     }
 
-    public function Update(){
-
+    public function Update($table, array $data){
+        return (new Update($this->conn,$table, $data));
     }
-    public function Insert(){
-
+    public function Create($table, array $data){
+        return (new Insert($this->conn))->execute($table, $data);
     }
     public function Delete(){
 
