@@ -2,6 +2,7 @@
     "name": "yamitec/orm",
     "description": "Basic and simplificated ORM",
     "type": "project",
+    "license": "MIT",
     "authors": [
         {
             "name": "Maou Yami",
