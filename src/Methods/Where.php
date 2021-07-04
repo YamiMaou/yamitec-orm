@@ -46,5 +46,35 @@ trait Where{
         }
         return $this;
     }
+
+    public function WhereIn($cond, $type = "IN"){
+        if($this->cond !== ""){
+            $this->cond .= " AND ";
+        }
+        if(is_array($cond)){
+            $this->cond .= implode(' AND ',array_map(
+                function($v, $k) use ($type) {
+                    return sprintf("%s {$type} '%s'",$k,$v);
+                }, $cond, array_keys($cond)));
+        }elseif(is_string($cond)){
+            $this->cond .= $cond;
+        }
+        return $this;
+    }
+
+    public function WhereNotIn($cond, $type = "NOT IN"){
+        if($this->cond !== ""){
+            $this->cond .= " AND ";
+        }
+        if(is_array($cond)){
+            $this->cond .= implode(' AND ',array_map(
+                function($v, $k) use ($type) {
+                    return sprintf("%s {$type} '%s'",$k,$v);
+                }, $cond, array_keys($cond)));
+        }elseif(is_string($cond)){
+            $this->cond .= $cond;
+        }
+        return $this;
+    }
     
 }
