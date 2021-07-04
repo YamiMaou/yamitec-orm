@@ -1,6 +1,6 @@
 {
     "name": "yamitec/orm",
-    "description": "ORM basica",
+    "description": "Basic and simplificated ORM",
     "type": "project",
     "authors": [
         {
