@@ -5,8 +5,9 @@
 
 ``` composer require yamitec/yamitec-orm ```
 
-### USO
+# USO
 
+## Configuracao
 Crie um arquivo chamado ".env" na raiz do seu projeto caso ele n exista, e adicione os seguintes parametros
 
 ```
@@ -18,7 +19,7 @@ DATABASE_PASS=toor # senha do usuario do banco de dados
 DATABASE_NAME=yamitec # nome do banco de dados
 DATABASE_CHARSET=utf8 # grupo de caracteres
 ```
-
+## Buscar Registros
 ```
 <?php
 $db = new \YamiTec\ORM\YamiORM(new \YamiTec\ORM\Adapters\MySQLAdapter());
@@ -51,7 +52,7 @@ $result = $db->Select()->from("Users")->Where(["name" => "teste"])->OrWhere(["na
 print_r($result);
 ```
 
-## Insert
+## Inserir Registro
 ``` 
 <?php
 $db = new \YamiTec\ORM\YamiORM(new \YamiTec\ORM\Adapters\MySQLAdapter());
@@ -61,7 +62,7 @@ $db->Create("Users", $data);
 // efetua o cadastro do registro de nome Aurelio na tabela Users
  ```
 
- ## Update
+ ## Atualizar Registro
 ``` 
 <?php
 $db = new \YamiTec\ORM\YamiORM(new \YamiTec\ORM\Adapters\MySQLAdapter());
