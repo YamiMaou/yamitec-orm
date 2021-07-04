@@ -7,6 +7,18 @@
 
 ### USO
 
+Crie um arquivo chamado ".env" na raiz do seu projeto caso ele n exista, e adicione os seguintes parametros
+
+```
+DATABASE_DRIVER=mysql # tipo de banco de dados
+DATABASE_HOST=localhost # IP OU HOST do servidor de banco de dados
+DATABASE_PORT=3306 # Porta de conexao com o banco de dados
+DATABASE_USER=root # usuario do banco de dados
+DATABASE_PASS=toor # senha do usuario do banco de dados
+DATABASE_NAME=yamitec # nome do banco de dados
+DATABASE_CHARSET=utf8 # grupo de caracteres
+```
+
 ```
 <?php
 $db = new \YamiTec\ORM\YamiORM(new \YamiTec\ORM\Adapters\MySQLAdapter());
