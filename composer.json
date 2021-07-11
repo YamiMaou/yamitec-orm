@@ -1,7 +1,7 @@
 {
     "name": "yamitec/orm",
     "description": "Basic and simplificated ORM",
-    "type": "package",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {
