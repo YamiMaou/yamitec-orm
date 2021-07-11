@@ -2,14 +2,15 @@
     "name": "yamitec/orm",
     "description": "Basic and simplificated ORM",
     "type": "library",
-    "license": "MIT",
     "authors": [
         {
             "name": "Maou Yami",
             "email": "maou@yamitec.com"
         }
     ],
+    "license": "MIT",
     "minimum-stability": "dev",
+    "version": "1.0.0",
     "require": {
         "yamitec/dot-env": "dev-main"
     },
