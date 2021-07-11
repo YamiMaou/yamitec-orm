@@ -11,7 +11,13 @@ class YamiORM {
     protected $conn;
     use Schema;
     public function __construct(AdapterExtends $adapter){
-        $this->conn = (new $adapter)->connect();
+        $adp = (new $adapter);
+        $this->conn = $adp->connect();
+        if($adp->getStatus() === false){
+            echo json_encode(["succes" => false, "message" => "Falha na conexão com o servidor.", "code" => "x03"]);
+            die;
+        }
+        
     }
     public function Query($query){
         return $this->conn->query($query)->fetchAll();

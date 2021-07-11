@@ -34,7 +34,7 @@ class Update {
             }, $this->data, array_keys($this->data)));
 
         $sql = "UPDATE {$this->table} SET {$set} {$where}";
-        echo $sql;
+        //echo $sql;
         $this->adapter->query($sql);
         return $this;
     }

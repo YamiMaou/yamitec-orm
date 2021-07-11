@@ -9,6 +9,7 @@ abstract class AdapterExtends implements \YamiTec\ORM\Interfaces\AdapterInterfac
     protected $_pass = null;
     protected $_database = null;
     protected $pdo;
+    private $status = false;
     public function __construct()
     {
         try {
@@ -21,10 +22,8 @@ abstract class AdapterExtends implements \YamiTec\ORM\Interfaces\AdapterInterfac
             $this->_database = $this->_database ?? getenv("DATABASE_NAME");
             return $this;
         } catch (\PDOException $e) {
-            return [
-                "success" => false,
-                "message" => $e->getMessage()
-            ];
+
+            return $this;
         }
         
     }
@@ -33,12 +32,16 @@ abstract class AdapterExtends implements \YamiTec\ORM\Interfaces\AdapterInterfac
         try {
             $this->pdo = new \PDO(sprintf("%s:dbname=%s;host=%s;port=%s;charset=%s",$this->_driver, $this->_database, $this->_host, $this->_port, $this->_charset), 
             $this->_user, $this->_pass, array(\PDO::ATTR_ERRMODE => \PDO::ERRMODE_EXCEPTION));
+            $this->status = true;
             return $this->pdo;
         } catch (\PDOException $e) {
-            return [
-                "success" => false,
-                "message" => $e->getMessage()
-            ];
+            echo $e->getMessage();
+            $this->status = false;
+            return $this->pdo;
         }
+    }
+
+    public function getStatus(){
+        return $this->status;
     }
 }
